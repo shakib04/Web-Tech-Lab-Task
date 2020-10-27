@@ -43,13 +43,13 @@ require_once "validation.php";
                 <tr>
                     <td>Password</td>
                     <td>
-                        <input type="text" name="password" id="" value="<?PHP echo $password; ?>"> <?php echo $er_password; ?>
+                        <input type="password" name="password" id="" value="<?PHP echo $password; ?>"> <?php echo $er_password; ?>
                     </td>
                 </tr>
                 <tr>
                     <td>Confirm Password</td>
                     <td>
-                        <input type="text" name="cfpassword" id="" value="<?PHP echo $cfpassword; ?>"> <?php echo $er_cfpassword; ?>
+                        <input type="password\" name="cfpassword" id="" value="<?PHP echo $cfpassword; ?>"> <?php echo $er_cfpassword; ?>
                     </td>
                 </tr>
 
@@ -141,17 +141,20 @@ require_once "validation.php";
                         </select>
 
                         <select name="Year" id="">
-                            <option value="<?php if ($year == "") {
-                                                echo "Year";
-                                            } else {
-                                                echo $year;
-                                            }
-                                            ?>" disabled selected><?php if ($year == "") {
-                                                                        echo "Year";
-                                                                    } else {
-                                                                        echo $year;
-                                                                    }
-                                                                    ?></option>
+                            <option value="
+                            <?php if ($year == "") {
+                                echo "Year";
+                            } else {
+                                echo $year;
+                            }
+                            ?>" disabled selected>
+                                <?php if ($year == "") {
+                                    echo "Year";
+                                } else {
+                                    echo $year;
+                                }
+                                ?>
+                            </option>
 
                             <?php
                             for ($i = 1995; $i <= 2000; $i++) {
