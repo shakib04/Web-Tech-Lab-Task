@@ -1,0 +1,295 @@
+<html>
+
+<head>
+    <style>
+        body{
+            background-color: #dfe6e9;
+        }
+
+        tr>td {
+            font-weight: bold;
+        }
+
+        tr>td span {
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 0;
+        }
+
+        td {
+            width: 280px;
+            line-height: 2;
+            vertical-align: top;
+        }
+        
+        h3{
+            color: #e74c3c;
+        }
+
+        td > h3{
+            display: inline;
+        }
+
+        td:nth-child(2){
+            width: 660px;
+        }
+
+    </style>
+    <title>Assignment-1</title>
+</head>
+
+<body>
+    <form action="" >
+        
+        <table align="center">
+            <tr>
+                <td colspan="2" style="font-weight: normal;"><b>1 Donation</b> > 2 Confirmation > Thank you </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h3>Donor Information</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>First Name: *</td>
+                <td><input type="text" name="" id="" required></td>
+            </tr>
+            <tr>
+                <td>Last Name*</td>
+                <td><input type="text" name="" id="" required></td>
+            </tr>
+            <tr>
+                <td>Company</td>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+
+            <tr>
+                <td>Address 1*</td>
+                <td><input type="text" name="" id="" required></td>
+            </tr>
+
+            <tr>
+                <td>Address 2</td>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+
+            <tr>
+                <td>City*</td>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+
+            <tr>
+                <td>State*</td>
+                <td>
+                    <select name="state" id="">
+                        <option value="Select a State" selected disabled>Select a State</option>
+                        <option value="California">California</option>
+                        <option value="Texas">Texas</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Zip Code*</td>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+
+            <tr>
+                <td>Country*</td>
+                <td>
+                    <select name="Country" id="">
+                        <option value="Select a Country" selected disabled>Select a Country</option>
+                        <option value="California">USA</option>
+                        <option value="Texas">UK</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Phone </td>
+                <td><input type="tel" name="" id=""></td>
+            </tr>
+
+            <tr>
+                <td>Fax </td>
+                <td><input type="tel" name="" id=""></td>
+            </tr>
+
+
+            <tr>
+                <td>Email* </td>
+                <td><input type="email" name="" id=""></td>
+            </tr>
+
+            <tr>
+                <td>
+                    Donation Amount* <br>
+                    <span style="font-weight: normal; font-style: italic;">(Check a button or type in your
+                        amount)</span>
+
+                </td>
+                <td>
+                    <input type="radio" name="amount" id="" value="none" checked required> None
+                    <input type="radio" name="amount" id="" value="$50" required> $50
+                    <input type="radio" name="amount" id="" value="$75" required> $75
+                    <input type="radio" name="amount" id="" value="$100" required> $100
+                    <input type="radio" name="amount" id="" value="$250" required> $250
+                    <input type="radio" name="amount" id="" value="other" required> other <br>
+                    Other Amount $ <input type="number" name="" id="">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Recurring Donation <br>
+                    <span>(Check if yes)</span>
+                </td>
+
+                <td>
+                    <input type="checkbox" name="" id=""> I am interested in giving on a regular basis. <br>
+                    <span style="font-style: normal;">Mothly Credit Card $ <input type="number" name="" id=""> For
+                        <input type="text" name="" id=""> Months</span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td colspan="2">
+                    <h3>Honorarium and Memorial Donation Information</h3>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>I would like to make this donation</td>
+                <td>
+
+
+                    <input type="radio" name="donation-for" id=""> To Honor
+                    <input type="radio" name="donation-for" id=""> In memory of
+                </td>
+            </tr>
+
+            <tr>
+                <td>Name </td>
+                <td>
+                    <input type="text" name="" id="">
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>Acknowledge Donation to </td>
+                <td>
+                    <input type="text" name="" id="">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Addess
+                </td>
+
+                <td>
+                    <input type="text" name="" id="">
+                </td>
+            </tr>
+
+            <tr>
+                <td>City</td>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+
+            <tr>
+                <td>State</td>
+                <td>
+                    <select name="state" id="">
+                        <option value="Select a State" selected disabled>Select a State</option>
+                        <option value="California">California</option>
+                        <option value="Texas">Texas</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Zip </td>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+
+
+
+            <tr>
+                <td colspan="2">
+                    <h3>Additional Information</h3>
+                    <p>Please enter your name, company or organization as you would like it to appear in our
+                        publications:
+                    </p>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <input type="checkbox" name="" id=""> I would like my gift to remain anonymous <br>
+                    <input type="checkbox" name="" id=""> My employer offers a matching gift by not mailing a thank you
+                    <br>
+                    <input type="checkbox" name="" id=""> Please save the of Acknowledge
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Comments
+                    <span>(Please type any questions or feedback here)</span>
+                </td>
+                <td>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="vertical-align: top;">How may we contact you?</td>
+                <td>
+                    <input type="checkbox" name="" id=""> Email <br>
+                    <input type="checkbox" name="" id=""> Postal Mail <br>
+                    <input type="checkbox" name="" id=""> Telephone <br>
+                    <input type="checkbox" name="" id=""> Fax
+                </td>
+            </tr>
+
+            <tr>
+                <td>I would like to receive newsletters and Information about special events by:</td>
+                <td>
+                    <input type="checkbox" name="" id=""> Email <br>
+                    <input type="checkbox" name="" id=""> Postal Mail <br>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <input type="checkbox" name="" id=""> I would like to Information about volunteering with the ....
+                </td>
+            </tr>
+
+            <tr>
+                <td><input type="reset" name="" id=""></td>
+                <td><input type="submit" value="Continue" name="" id=""></td>
+            </tr>
+
+
+
+        </table>
+    </form>
+</body>
+
+</html>
