@@ -109,6 +109,9 @@ if (isset($_POST['register'])) {
     if ($password == $_POST['cfpassword']) {
         $er_cfpassword = "<span style='color:red;'>Password does not match</span>";
     }
+    else{
+        $cfpassword = $_POST['cfpassword'];
+    }
 }
 
 ?>
@@ -179,7 +182,7 @@ if (isset($_POST['register'])) {
                 <tr>
                     <td>Address</td>
                     <td>
-                        <input type="text" name="address" id="" placeholder="Street Address">
+                        <input type="text" name="address" id="" placeholder="Street Address"> 
                     </td>
                 </tr>
 
