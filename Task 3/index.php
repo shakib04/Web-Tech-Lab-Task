@@ -3,8 +3,6 @@
 require_once "validation.php";
 ?>
 
-
-
 <!DOCTYPE html>
 <html>
 
@@ -105,7 +103,12 @@ require_once "validation.php";
                                             } else {
                                                 echo $day;
                                             }
-                                            ?>" disabled selected>Day</option>
+                                            ?>" disabled selected><?php if ($day == "") {
+                                                                        echo "Day";
+                                                                    } else {
+                                                                        echo $day;
+                                                                    }
+                                                                    ?></option>
 
                             <?php
                             for ($i = 1; $i <= 31; $i++) {
@@ -120,7 +123,12 @@ require_once "validation.php";
                                             } else {
                                                 echo $month;
                                             }
-                                            ?>" disabled selected>Month</option>
+                                            ?>" disabled selected><?php if ($month == "") {
+                                                                        echo "Month";
+                                                                    } else {
+                                                                        echo $month;
+                                                                    }
+                                                                    ?></option>
 
                             <?php
                             $months = ['January', 'February', 'March', 'April', 'June', 'July', 'August', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -133,12 +141,17 @@ require_once "validation.php";
                         </select>
 
                         <select name="Year" id="">
-                            <option value="<?php if ($month == "") {
-                                                echo "Month";
+                            <option value="<?php if ($year == "") {
+                                                echo "Year";
                                             } else {
-                                                echo $month;
+                                                echo $year;
                                             }
-                                            ?>" disabled selected>Year</option>
+                                            ?>" disabled selected><?php if ($year == "") {
+                                                                        echo "Year";
+                                                                    } else {
+                                                                        echo $year;
+                                                                    }
+                                                                    ?></option>
 
                             <?php
                             for ($i = 1995; $i <= 2000; $i++) {
