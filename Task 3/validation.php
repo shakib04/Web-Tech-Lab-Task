@@ -69,8 +69,10 @@ if (isset($_POST['register'])) {
 
     if ($password != $_POST['cfpassword']) {
         $er_cfpassword = "<span style='color:red;'>Password does not match</span>";
+        $hasError = true;
     } else {
         $cfpassword = $_POST['cfpassword'];
+        $hasError = false;
     }
 
 
@@ -78,10 +80,13 @@ if (isset($_POST['register'])) {
 
     if (empty(trim($_POST['email']))) {
         $er_email = "<span style='color:red;'> Email is Required </span>";
+        $hasError = true;
     } elseif (strpos($_POST['email'], " ")) {
         $er_email = "<span style='color:red;'> Space is not Allowed </span>";
+        $hasError = true;
     } elseif (!strpos($_POST['email'], "@") or !strpos($_POST['email'], ".")) {
         $er_email = "<span style='color:red;'> Email is not valid. No [@] </span>";
+        $hasError = true;
     } elseif (strpos($_POST['email'], "@")) {
         $atRatePos = strpos($_POST['email'], "@");
 
@@ -97,8 +102,10 @@ if (isset($_POST['register'])) {
 
         if ($hasDot) {
             $email = htmlspecialchars($_POST['email']);
+            $hasError = false;
         } else {
             $er_email = "<span style='color:red;'> Email is not valid </span>";
+            $hasError = true;
         }
     }
 
@@ -110,24 +117,30 @@ if (isset($_POST['register'])) {
 
     if (empty(trim($_POST['street']))) {
         $er_street = "<span style='color:red;'> Street is Required </span>";
+        $hasError = true;
     } else {
         $street = htmlspecialchars($_POST['street']);
+        $hasError = false;
     }
 
     //city
 
     if (empty(trim($_POST['city']))) {
         $er_city = "<span style='color:red;'> city is Required </span>";
+        $hasError = true;
     } else {
         $city = htmlspecialchars($_POST['city']);
+        $hasError = false;
     }
 
     //state
 
     if (empty(trim($_POST['state']))) {
         $er_state = "<span style='color:red;'>state is Required </span>";
+        $hasError = true;
     } else {
         $state = htmlspecialchars($_POST['state']);
+        $hasError = false;
     }
 
     //postal validation
@@ -135,8 +148,10 @@ if (isset($_POST['register'])) {
 
     if (empty(trim($_POST['postal']))) {
         $er_postal = "<span style='color:red;'> postal is Required </span>";
+        $hasError = true;
     } else {
         $postal = htmlspecialchars($_POST['postal']);
+        $hasError = false;
     }
 
 
@@ -150,24 +165,32 @@ if (isset($_POST['register'])) {
 
     if (empty(trim($_POST['phoneNumber']))) {
         $er_phoneNumber = "<span style='color:red;'> Phone Number is Required </span>";
+        $hasError = true;
     } elseif (!is_numeric($_POST['phoneNumber'])) {
         $er_phoneNumber = "<span style='color:red;'> Number is not valid (only numeric) </span>";
+        $hasError = true;
     } elseif (strpos($_POST['phoneNumber'], " ")) {
         $er_phoneNumber = "<span style='color:red;'> Space is not Allowed </span>";
+        $hasError = true;
     } else {
         $phoneNumber = $_POST['phoneNumber'];
+        $hasError = false;
     }
 
     //country code
 
     if (empty(trim($_POST['phone-code']))) {
         $er_phoneCode = "<span style='color:red;'> Phone Code is Required </span>";
+        $hasError = true;
     } elseif (!is_numeric($_POST['phone-code'])) {
         $er_phoneCode = "<span style='color:red;'> Number is not valid (only numeric) </span>";
+        $hasError = true;
     } elseif (strpos($_POST['phone-code'], " ")) {
         $er_phoneCode = "<span style='color:red;'> Space is not Allowed </span>";
+        $hasError = true;
     } else {
         $phoneCode = $_POST['phone-code'];
+        $hasError = false;
     }
 
 
@@ -179,10 +202,12 @@ if (isset($_POST['register'])) {
 
     if (!isset($_POST['Day']) or !isset($_POST['Month']) or !isset($_POST['Year'])) {
         $er_bod = "<span style='color:red;'> Select All Fields </span>";
+        $hasError = true;
     } else {
         $day = htmlentities($_POST['Day']);
         $month = htmlentities($_POST['Month']);
         $year = htmlentities($_POST['Year']);
+        $hasError = false;
     }
 
 
@@ -192,8 +217,10 @@ if (isset($_POST['register'])) {
 
     if (!isset($_POST['gender'])) {
         $er_gender = "<span style='color:red;'> (Must Select 1) </span>";
+        $hasError = true;
     } else {
         $gender = $_POST['gender'];
+        $hasError = false;
     }
 
 
@@ -202,9 +229,10 @@ if (isset($_POST['register'])) {
 
     if (!isset($_POST['hear-from'])) {
         $er_hearFrom = "<span style='color:red;'> (Must Select 1) </span>";
+        $hasError = true;
     } else {
         $hearFrom = $_POST['hear-from'];
-        
+        $hasError = false;
     }
 
 
@@ -212,27 +240,29 @@ if (isset($_POST['register'])) {
 
     if (empty(trim($_POST['bio']))) {
         $er_bio = "<span style='color:red;'>Bio is Required </span>";
+        $hasError = true;
     } else {
         $bio = htmlspecialchars($_POST['bio']);
+        $hasError = false;
     }
 }
 
-// if ($hasError) {
-echo "Name: $fullname" . "<br>";
-echo "Username: $uname" . "<br>";
-echo "Password: $password" . "<br>";
-echo "Confirm Password: $cfpassword" . "<br>";
-echo "Confirm Password: $cfpassword" . "<br>";
-echo "Phone Number: $phoneCode $phoneNumber" . "<br>";
-echo "Adree: Street - $street,  City - $city, State - $state, Postal Code - $postal" . "<br>";
-echo "Birthdate: $day/$month/$year" . "<br>";
-echo "Gender: $gender" . "<br>";
-echo "Where Did you hear about us?: ";
-echo "<pre>";
-print_r($hearFrom); 
-echo "</pre>" . "<br>";
+echo $hasError;
 
-echo "BIO: $bio" . "<br>";
+if (!$hasError) {
+    echo "Name: $fullname" . "<br>";
+    echo "Username: $uname" . "<br>";
+    echo "Password: $password" . "<br>";
+    echo "Confirm Password: $cfpassword" . "<br>";
+    echo "Confirm Password: $cfpassword" . "<br>";
+    echo "Phone Number: $phoneCode $phoneNumber" . "<br>";
+    echo "Adree: Street - $street,  City - $city, State - $state, Postal Code - $postal" . "<br>";
+    echo "Birthdate: $day/$month/$year" . "<br>";
+    echo "Gender: $gender" . "<br>";
+    echo "Where Did you hear about us?: ";
+    echo "<pre>";
+    print_r($hearFrom);
+    echo "</pre>" . "<br>";
 
-
-// }
+    echo "BIO: $bio" . "<br>";
+}
