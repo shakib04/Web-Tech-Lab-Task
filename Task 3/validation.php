@@ -5,6 +5,9 @@ $er_fullname = $er_uname = $er_password = $er_cfpassword = $er_email = $er_phone
 
 $hasError = false;
 
+$st = "myname1A";
+var_dump(ctype_upper($st));
+
 if (isset($_POST['register'])) {
 
 
@@ -53,13 +56,11 @@ if (isset($_POST['register'])) {
     } elseif (!strpos($_POST['password'], "1")) {
         $er_password = "<span style='color:red;'>Password must contain 1 number  </span>";
         $hasError = true;
-    }
-    // } elseif (!ctype_upper($_POST['password'])) {
-    //     $er_password = "<span style='color:red;'>Password must contain 1 uppercase  </span>";
-    // } elseif (!ctype_lower($_POST['password'])) {
-    //     $er_password = "<span style='color:red;'>Password must contain 1 lowercase  </span>";
-    // } 
-    else {
+    } elseif (ctype_upper($_POST['password'])) {
+        $er_password = "<span style='color:red;'>Password must contain 1 lowercase  </span>";
+    } elseif (ctype_lower($_POST['password'])) {
+        $er_password = "<span style='color:red;'>Password must contain 1  uppercase </span>";
+    } else {
         $password = htmlspecialchars($_POST['password']);
         $hasError = false;
     }
