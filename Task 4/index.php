@@ -10,6 +10,8 @@
 		
 	}*/
 
+	session_start();
+
 	
 require_once "registration.php";
 
@@ -34,6 +36,7 @@ foreach ($users as $user) {
 }
 if (isset($_POST['register'])) {
 	if ($flag) {
+		$_SESSION['uname'] = $uname;
 		header("Location: dashboard.php");
 	} else {
 		echo "Invalid credentiails";
