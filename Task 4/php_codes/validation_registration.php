@@ -20,7 +20,7 @@
 			$pass=htmlspecialchars($_POST["pass"]);
 		}
 		
-		/* if(!$hasError){
+		 if(!$hasError and $_POST['register'] == "register"){
 			$users = simplexml_load_file("data.xml");
 			
 			$user = $users->addChild("user");
@@ -39,7 +39,7 @@
 			
 			$file = fopen("data.xml","w");
 			fwrite($file,$xml->saveXML());
-		} */
+		}
 	}
 	
 ?>

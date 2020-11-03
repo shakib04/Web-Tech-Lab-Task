@@ -25,4 +25,9 @@
     <password>45435</password>
     <type>user</type>
   </user>
+  <user>
+    <username>q</username>
+    <password>q</password>
+    <type>user</type>
+  </user>
 </users>

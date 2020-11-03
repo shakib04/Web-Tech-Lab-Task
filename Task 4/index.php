@@ -10,9 +10,7 @@
 		
 	}*/
 
-
-//require_once "php_codes/validation_registration.php";
-
+	
 require_once "registration.php";
 
 //echo $uname . "<br>";
