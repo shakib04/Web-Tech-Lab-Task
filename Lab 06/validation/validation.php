@@ -8,13 +8,14 @@ function validate($data)
     return $data;
 }
 $er_fullname = $err_username = $er_password = $err_fname = $er_cfpassword = $er_email = $er_phoneNumber = $er_city = $er_gender = "";
-$fullname = $username = $password = $fname = $cfpassword = $email = $phone_number = $city = "";
+$fullname = $username = $password = $fname = $cfpassword = $email = $phoneNumber = $city = "";
 $temp_username = $temp_password = $temp_fname = $temp_user_type = $temp_email = $temp_phone_number = $temp_city = $temp_local_address = "";
 
 $hasError = true;
+$validCount = 0;
 
 if (isset($_POST['register'])) {
-    
+
     //fullname validation
 
     if (empty(trim($_POST['fullname']))) {
@@ -22,7 +23,8 @@ if (isset($_POST['register'])) {
         $hasError = true;
     } else {
         $fullname = htmlspecialchars($_POST['fullname']);
-        $hasError = false;
+        $validCount++;
+        //$hasError = false;
     }
 
 
@@ -42,7 +44,7 @@ if (isset($_POST['register'])) {
         $hasError = true;
     } else {
         $username = validate($_POST['username']);
-        $hasError = false;
+        $validCount++; //$hasError = false;
     }
 
 
@@ -69,7 +71,8 @@ if (isset($_POST['register'])) {
         $hasError = true;
     } else {
         $password = validate($_POST['password']);
-        $hasError = false;
+        $validCount++;
+        //$hasError = false;
     }
 
 
@@ -85,7 +88,8 @@ if (isset($_POST['register'])) {
         $hasError = true;
     } else {
         $cfpassword = $_POST['cfpassword'];
-        $hasError = false;
+        $validCount++;
+        //$hasError = false;
     }
 
 
@@ -97,7 +101,8 @@ if (isset($_POST['register'])) {
         $hasError = true;
     } else {
         $gender = $_POST['gender'];
-        $hasError = false;
+        $validCount++;
+        //$hasError = false;
     }
 
 
@@ -127,10 +132,12 @@ if (isset($_POST['register'])) {
 
         if ($hasDot) {
             $email = htmlspecialchars($_POST['email']);
+            $validCount++;
             $hasError = false;
         } else {
             $er_email = "<span style='color:red;'> Email is not valid </span>";
-            $hasError = true;
+            
+            //$hasError = true;
         }
     }
 
@@ -149,7 +156,8 @@ if (isset($_POST['register'])) {
         $hasError = true;
     } else {
         $phoneNumber = $_POST['contactNumber'];
-        $hasError = false;
+        $validCount++;
+        //$hasError = false;
     }
 
 
@@ -161,6 +169,7 @@ if (isset($_POST['register'])) {
         $hasError = true;
     } else {
         $city = htmlspecialchars($_POST['city']);
+        $validCount++;
         $hasError = false;
     }
 
@@ -168,7 +177,9 @@ if (isset($_POST['register'])) {
 
     //save data to admin.xml file
 
-    if ($hasError == false) {
+    echo $validCount;
+
+    if ($validCount == 8) {
         $admin = simplexml_load_file("admin.xml");
         $user = $admin->addChild("user");
         $user->addChild("fullname", $fullname);
@@ -176,7 +187,7 @@ if (isset($_POST['register'])) {
         $user->addChild("password", $password);
         $user->addChild("gender", $gender);
         $user->addChild("email", $email);
-        $user->addChild("contact", $contact);
+        $user->addChild("contact", $phoneNumber);
         $user->addChild("city", $city);
         //$user->addChild("username", $username);
 

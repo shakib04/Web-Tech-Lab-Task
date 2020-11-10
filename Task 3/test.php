@@ -4,8 +4,10 @@ $fullname = $er_fullname = $uname = "";
 
 if (isset($_POST['register'])) {
     $fullname = $_POST['fullname'];
-    $uname = $_POST['uname'];
-    echo $uname;
+    //$uname = $_POST['uname'];
+    echo $fullname;
+} else {
+    echo "button is not clicked";
 }
 
 

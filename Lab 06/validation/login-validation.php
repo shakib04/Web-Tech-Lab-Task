@@ -18,7 +18,7 @@ if (isset($_POST['login'])) {
         $err_username = "<span style='color:red;'>Username is Required</span>";
         $hasError = true;
     } else {
-        $username = validate($_POST['password']);
+        $username = validate($_POST['username']);
         $hasError = false;
     }
 
@@ -36,6 +36,8 @@ if (isset($_POST['login'])) {
         $flag = false;
 
         foreach ($users as $user) {
+            echo $user->username . "  " . $user->password . "<br>";
+            echo $username . "  " . $password . "<br>";
             if ($user->username == $username && $user->password == $password) {
                 $flag = true;
                 break;

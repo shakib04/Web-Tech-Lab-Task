@@ -96,8 +96,7 @@ require_once("validation/validation.php");
             <tr>
                 <td>Confirm Password</td>
                 <td>
-                    <input type="text" name="cfpassword" id="" value="<?PHP //echo $cfpassword; 
-                                                                        ?>"> <?php echo $er_cfpassword; ?>
+                    <input type="text" name="cfpassword" id="" value="<?PHP //echo $cfpassword; ?>"> <?php echo $er_cfpassword; ?>
                 </td>
             </tr>
 

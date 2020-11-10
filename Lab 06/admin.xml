@@ -2,47 +2,21 @@
 <root>
   <user>
     <fullname>Shakib</fullname>
-    <username>s1</username>
-    <password>s1</password>
-    <gender>s1</gender>
-    <email>s1</email>
-    <contact>s1</contact>
-    <city>s1</city>
-  </user>
-  <user>
-    <fullname>joy</fullname>
-    <username/>
-    <password>shakibul#1</password>
-    <gender>Male</gender>
-    <email>mdshakibulalam@gmail.com</email>
-    <contact/>
-    <city>Dhaka</city>
-  </user>
-  <user>
-    <fullname>Shakib</fullname>
-    <username>dfdsfsd</username>
-    <password>shakibul#1</password>
-    <gender>Male</gender>
-    <email>mdshakibulalam@gmail.com</email>
-    <contact/>
-    <city>Dhaka</city>
-  </user>
-  <user>
-    <fullname>Shakib</fullname>
     <username>shakib04</username>
-    <password/>
+    <password>shakibul#1</password>
     <gender>Male</gender>
     <email>mdshakibulalam@gmail.com</email>
     <contact/>
     <city>Dhaka</city>
   </user>
+  
   <user>
     <fullname>Shakib</fullname>
     <username>shakib04</username>
     <password>shakibul#1</password>
     <gender>Male</gender>
     <email>mdshakibulalam@gmail.com</email>
-    <contact/>
+    <contact>01622047400</contact>
     <city>Dhaka</city>
   </user>
 </root>
