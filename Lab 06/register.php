@@ -9,8 +9,6 @@
 require_once("validation/validation.php");
 
 
-
-
 // $xml = simplexml_load_file("xml-data/data-file.xml");
 // $users = $xml->user;
 

@@ -14,10 +14,7 @@ $temp_username = $temp_password = $temp_fname = $temp_user_type = $temp_email = 
 $hasError = true;
 
 if (isset($_POST['register'])) {
-    echo "register button clicked";
-    $temp_username = $_POST['username'];
-
-
+    
     //fullname validation
 
     if (empty(trim($_POST['fullname']))) {
@@ -31,20 +28,20 @@ if (isset($_POST['register'])) {
 
     //username validation
 
-    if (empty(trim($temp_username))) {
+    if (empty(trim($_POST['username']))) {
         $err_username = "<span style='color:red;'>Username is Required</span>";
         $hasError = true;
-    } elseif (strlen($temp_username) < 5) {
+    } elseif (strlen($_POST['username']) < 5) {
         $err_username = "Username must be 5 Charectors Long";
         $hasError = true;
-    } elseif (strlen($temp_username) > 10) {
+    } elseif (strlen($_POST['username']) > 10) {
         $err_username = "Username cannot be more than 10 Charectors Long";
         $hasError = true;
-    } elseif (strpos($temp_username, " ")) {
+    } elseif (strpos($_POST['username'], " ")) {
         $err_username = "Space is not Allowed";
         $hasError = true;
     } else {
-        $username = validate($temp_username);
+        $username = validate($_POST['username']);
         $hasError = false;
     }
 
@@ -171,8 +168,8 @@ if (isset($_POST['register'])) {
 
     //save data to admin.xml file
 
-    if (!$hasError) {
-        $admin = simplexml_load_file("xml-data/data-file.xml");
+    if ($hasError == false) {
+        $admin = simplexml_load_file("admin.xml");
         $user = $admin->addChild("user");
         $user->addChild("fullname", $fullname);
         $user->addChild("username", $username);
@@ -189,8 +186,8 @@ if (isset($_POST['register'])) {
 
         $newXmlobj->loadXML($admin->asXML());
 
-        $file = fopen("xml-data/data-file.xml", "w");
-        fwrite($f, $newXmlobj->saveXML());
+        $file = fopen("admin.xml", "w");
+        fwrite($file, $newXmlobj->saveXML());
 
         header("Location: login.php");
     }
@@ -198,3 +195,16 @@ if (isset($_POST['register'])) {
 
     //echo $_POST['username'];
 }
+
+
+// <root>
+//     <user>
+//         <fullname>Shakib</fullname>
+//         <username>s1</username>
+//         <password>s1</password>
+//         <gender>s1</gender>
+//         <email>s1</email>
+//         <contact>s1</contact>
+//         <city>s1</city>
+//     </user>
+// </root>
