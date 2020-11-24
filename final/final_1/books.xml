@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root>
+  <book>
+    <name>Book1</name>
+    <category>Architecture</category>
+    <desc>sdf dfsafasdf</desc>
+    <pub>dsfsd</pub>
+    <edition>3</edition>
+    <isbn>433243243214</isbn>
+    <pages>232</pages>
+    <price>100</price>
+  </book>
+</root>

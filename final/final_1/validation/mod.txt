@@ -1,0 +1,1 @@
+$err_name = $err_cat = $err_desc = $err_pub = $err_ed = $err_isbn = $err_pages = $err_price = "";
