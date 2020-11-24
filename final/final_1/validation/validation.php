@@ -182,51 +182,23 @@ if (isset($_POST['register'])) {
     //echo $validCount;
 
     if ($validCount == 3) {
-        // $admin = simplexml_load_file("admin.xml");
-        // $user = $admin->addChild("user");
-        // $user->addChild("fullname", $fullname);
-        // $user->addChild("username", $username);
-        // $user->addChild("password", $password);
-        // $user->addChild("gender", $gender);
-        // $user->addChild("email", $email);
-        // $user->addChild("contact", $phoneNumber);
-        // $user->addChild("type", $type);
-        // //$user->addChild("username", $username);
-
-        // $newXmlobj = new DOMDocument("1.0");
-        // $newXmlobj->preserveWhiteSpace = false;
-        // $newXmlobj->formatOutput = true;
-
-        // $newXmlobj->loadXML($admin->asXML());
-
-        // $file = fopen("admin.xml", "w");
-        // fwrite($file, $newXmlobj->saveXML());
         $password = md5($password);
+        $dulplicateQuery = "select name from users where name='$username';";
+        $result = mysqli_query($conn, $dulplicateQuery);
 
-
-        $query = "INSERT INTO users VALUES (NULL, '$username', '$password', '$type')";
-        $result = mysqli_query($conn, $query);
-        //mysqli_close($conn);
-        if ($result) {
-            header("Location: login.php");
+        if (mysqli_num_rows($result) == 1) {
+            echo "username already registered! Select another one";
         } else {
-            echo "Failed to Register! Try Again..";
+
+
+            $query = "INSERT INTO users VALUES (NULL, '$username', '$password', '$type')";
+            $result = mysqli_query($conn, $query);
+            mysqli_close($conn);
+            if ($result) {
+                header("Location: login.php");
+            } else {
+                echo "Failed to Register! Try Again..";
+            }
         }
     }
-
-
-    //echo $_POST['username'];
 }
-
-
-// <root>
-//     <user>
-//         <fullname>Shakib</fullname>
-//         <username>s1</username>
-//         <password>s1</password>
-//         <gender>s1</gender>
-//         <email>s1</email>
-//         <contact>s1</contact>
-//         <type>s1</type>
-//     </user>
-// </root>
