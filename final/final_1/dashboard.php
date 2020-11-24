@@ -61,8 +61,8 @@ if (!isset($_SESSION['username'])) {
             } else { ?>
 
         <tr>
-            <th>Name</th>
             <th>ID</th>
+            <th>Name</th>
             <th>Type</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -82,9 +82,6 @@ if (!isset($_SESSION['username'])) {
     ?>
 
     </table>
-
-
-
 
 </body>
 

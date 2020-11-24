@@ -186,11 +186,9 @@ if (isset($_POST['register'])) {
         $dulplicateQuery = "select name from users where name='$username';";
         $result = mysqli_query($conn, $dulplicateQuery);
 
-        if (mysqli_num_rows($result) == 1) {
-            echo "username already registered! Select another one";
+        if (mysqli_num_rows($result) >= 1) {
+            $err_username = "username already registered! Select another one";
         } else {
-
-
             $query = "INSERT INTO users VALUES (NULL, '$username', '$password', '$type')";
             $result = mysqli_query($conn, $query);
             mysqli_close($conn);
