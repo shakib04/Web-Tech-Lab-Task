@@ -1,4 +1,10 @@
 <?php
+
+if (count($_SESSION) == 0) {
+} else {
+    header("location:dashboard-admin.php");
+}
+
 require_once("validation/login-validation.php");
 ?>
 
@@ -11,13 +17,18 @@ require_once("validation/login-validation.php");
         td {
             font-weight: bold;
         }
+
+        form {
+            background-image: url("resources/bgnoise_lg.png");
+
+        }
     </style>
 </head>
 
 <body>
 
     <form action="" method="post">
-        <h2>Welcome to Registration</h2>
+        <div style="background-color: dimgray; padding: 10px; color:white; font-size: 20px;">Login</div>
         <table>
             <tr>
                 <td>Username</td>
