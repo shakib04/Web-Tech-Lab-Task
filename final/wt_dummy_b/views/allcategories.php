@@ -1,10 +1,11 @@
 <?php
 include 'admin_header.php';
-require_once "../models/db-conn.php";
+require_once "../controllers/CategoryController.php";
 
-$sqlCategories = "SELECT * FROM `categories` order by c_id;";
+$categories = getAllCategories()
+
 //SELECT  c.c_id,c.name, COUNT(p.category) FROM categories c, products p WHERE c.c_id = p.category GROUP  BY c.name;
-$categories = getValues($sqlCategories);
+
 ?>
 <!--All Categories starts -->
 

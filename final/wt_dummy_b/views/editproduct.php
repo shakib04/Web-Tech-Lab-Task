@@ -1,48 +1,9 @@
 <?php include 'admin_header.php';
 require_once "../models/db-conn.php";
+require_once "../controllers/ProductController.php";
+require_once "../controllers/CategoryController.php";
 
-
-if (isset($_POST['update-product'])) {
-	$name = $_POST['pname'];
-	$category = $_POST['category'];
-	$price = $_POST['price'];
-	$quantity = $_POST['quantity'];
-	$description = $_POST['description'];
-
-	$productImage = $_FILES['product-image'];
-
-	$tmpname = $productImage['tmp_name'];
-	$targetDir = "images/product-image/";
-	$fileTypeExtension = strtolower(pathinfo($productImage['name'], PATHINFO_EXTENSION));
-	$filename = $_POST['pname'] . "-" . uniqid() . ".$fileTypeExtension";
-	$targetFile = $targetDir . $filename;
-
-	if (move_uploaded_file($tmpname, $targetFile)) {
-		$status = "Uploaded !!";
-		updateProduct($name, $category, $price, $quantity, $description, $targetFile);
-		//$validCount++;
-	} else {
-		$status = "Failed to Upload";
-	}
-}
-
-function updateProduct($name, $category, $price, $quantity, $description, $imgAddress)
-{
-	$sqlUpdateProduct = "UPDATE `products` SET `name` = '$name', `category` = '$category', `price` = '$price', `qunatity` = '$quantity', `description` = '$description', `image` = '$imgAddress' WHERE `products`.`p_id` =" . $_GET['p-id'] . ";";
-	dbOperation($sqlUpdateProduct);
-	//header("location:allproducts.php");
-}
-
-$sqlCategories = "SELECT * FROM `categories` order by name;";
-
-$categories = getValues($sqlCategories);
-
-
-if (isset($_GET['p-id'])) {
-	$sqlgetDatafromId = "SELECT p.*,c.name catName FROM products p, categories c WHERE p.category = c.c_id and p_id =" . $_GET['p-id'] . ";";
-	$productData = getValues($sqlgetDatafromId);
-}
-
+$categories = getAllCategories()
 
 ?>
 <!--editproduct starts -->

@@ -1,20 +1,7 @@
 <?php include 'admin_header.php';
 require_once "../models/db-conn.php";
 
-if (isset($_POST['add-category'])) {
-	$name = $_POST['name'];
-	addCategory($name);
-}
 
-function addCategory($name)
-{
-	$sqlAddCategory = "INSERT INTO `categories` (`c_id`, `name`) VALUES (NULL, '$name');";
-	if (dbOperation($sqlAddCategory)) {
-		header("location:allcategories.php");
-	} else {
-		echo "Failed to Add!!";
-	}
-}
 
 ?>
 <!--addproduct starts -->

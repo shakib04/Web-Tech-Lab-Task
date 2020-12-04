@@ -1,8 +1,9 @@
 <?php
 include 'admin_header.php';
-require_once "../models/db-conn.php";
-$sqlAllProducts = "SELECT p.*,c.name catName FROM products p, categories c WHERE p.category = c.c_id;";
-$products = getValues($sqlAllProducts);
+
+require_once "../controllers/ProductController.php";
+$products = getAllProducts();
+
 
 ?>
 <!--All Products starts -->

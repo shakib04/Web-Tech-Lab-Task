@@ -1,48 +1,9 @@
 <?php include 'admin_header.php';
 
-require_once "../models/db-conn.php";
+require_once "../controllers/ProductController.php";
+require_once "../controllers/CategoryController.php";
 
-$sqlCategories = "SELECT * FROM `categories` order by name;";
-
-$categories = getValues($sqlCategories);
-
-
-$status = "";
-$validCount = 0;
-if (isset($_POST['add-product'])) {
-	$name = $_POST['pname'];
-	$category = $_POST['category'];
-	$price = $_POST['price'];
-	$quantity = $_POST['quantity'];
-	$description = $_POST['description'];
-
-	$productImage = $_FILES['product-image'];
-
-	$tmpname = $productImage['tmp_name'];
-	$targetDir = "images/product-image/";
-	$fileTypeExtension = strtolower(pathinfo($productImage['name'], PATHINFO_EXTENSION));
-	$filename = $_POST['pname'] . "-" . uniqid() . ".$fileTypeExtension";
-	$targetFile = $targetDir . $filename;
-
-	if (move_uploaded_file($tmpname, $targetFile)) {
-		$status = "Uploaded !!";
-		$validCount++;
-	} else {
-		$status = "Failed to Upload";
-	}
-
-
-	if ($validCount == 1) {
-		addProduct($name, $category, $price, $quantity, $description, $targetFile);
-	}
-}
-
-function addProduct($name, $category, $price, $quantity, $description, $imgAddress)
-{
-	$sqlAddProduct = "INSERT INTO `products` (`p_id`, `name`, `category`, `price`, `qunatity`, `description`, `image`) VALUES (NULL, '$name', '$category', '$price', '$quantity', '$description', '$imgAddress');";
-	dbOperation($sqlAddProduct);
-}
-
+$categories = getAllCategories();
 
 ?>
 <!--addproduct starts -->

@@ -1,23 +1,5 @@
 <?php include 'admin_header.php';
-require_once "../models/db-conn.php";
-
-if (isset($_POST['edit-category'])) {
-	$cname = $_POST['cname'];
-	updateCategory($cname);
-}
-
-function updateCategory($cname)
-{
-	$sqlUpdateCategory = "UPDATE `categories` SET `name` = '$cname' WHERE `categories`.`c_id` =" . $_GET['c-id'] . ";";
-	dbOperation($sqlUpdateCategory);
-}
-
-if (isset($_GET['c-id'])) {
-	$id = $_GET['c-id'];
-	$sql = "select * from categories where c_id =$id;";
-	$categories = getValues($sql);
-}
-
+require_once "../controllers/CategoryController.php";
 
 ?>
 <!--edit category starts -->
