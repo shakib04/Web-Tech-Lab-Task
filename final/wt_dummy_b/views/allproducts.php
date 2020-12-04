@@ -1,5 +1,9 @@
 <?php
 include 'admin_header.php';
+require_once "../models/db-conn.php";
+$sqlAllProducts = "SELECT p.*,c.name catName FROM products p, categories c WHERE p.category = c.c_id;";
+$products = getValues($sqlAllProducts);
+
 ?>
 <!--All Products starts -->
 
@@ -12,19 +16,23 @@ include 'admin_header.php';
 			<th>Category </th>
 			<th> Price</th>
 			<th> Quantity</th>
+			<th> Image</th>
 			<th></th>
 			<th></th>
-
 		</thead>
-		<tbody>
-			<td>1</td>
-			<td>Groserry</td>
-			<td>100</td>
-			<td>10</td>
-			<td>10.2.2020</td>
-			<td><a href="editproduct.php" class="btn btn-success">Edit</a></td>
-			<td><a class="btn btn-danger">Delete</td>
-		</tbody>
+		<?php foreach ($products as $product) {
+			echo "<tbody>";
+			echo "<td>" . $product['p_id'] . "</td>";
+			echo "<td>" . $product['name'] . "</td>";
+			echo "<td>" . $product['catName'] . "</td>";
+			echo "<td>" . $product['price'] . "</td>";
+			echo "<td>" . $product['qunatity'] . "</td>";
+			echo "<td><img height='40' width='40' src='" . $product['image'] . "'></td>";
+			echo "<td><a href='editproduct.php?p-id=". $product['p_id'] . "' class='btn btn-success'>Edit</a></td>";
+			echo "<td><a class='btn btn-danger'>Delete</td>";
+			echo "</tbody>";
+		}
+		?>
 	</table>
 </div>
 <!--Products ends -->

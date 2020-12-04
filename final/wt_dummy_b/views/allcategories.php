@@ -27,7 +27,7 @@ $categories = getValues($sqlCategories);
 			echo "<td>" . $category['c_id'] . "</td>";
 			echo "<td>" . $category['name'] . "</td>";
 			echo "<td>100</td>";
-			echo '<td><a href="editcategory.php" class="btn btn-success">Edit</a></td>';
+			echo '<td><a href="editcategory.php?c-id='. $category['c_id'] .'"class="btn btn-success">Edit</a></td>';
 			echo '<td><a class="btn btn-danger">Delete</td>';
 			echo "</tbody>";
 		}

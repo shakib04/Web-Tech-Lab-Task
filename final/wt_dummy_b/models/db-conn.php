@@ -4,7 +4,7 @@ $db_pass = "";
 $db_name = "final_lab_task";
 $host = "localhost";
 
-function operation($query)
+function dbOperation($query)
 {
     global $db_name, $db_pass, $db_user, $host;
     $conn = mysqli_connect($host, $db_user, $db_pass, $db_name) or die("Connection Failed" . mysqli_connect_error());

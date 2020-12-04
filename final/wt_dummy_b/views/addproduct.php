@@ -40,7 +40,7 @@ if (isset($_POST['add-product'])) {
 function addProduct($name, $category, $price, $quantity, $description, $imgAddress)
 {
 	$sqlAddProduct = "INSERT INTO `products` (`p_id`, `name`, `category`, `price`, `qunatity`, `description`, `image`) VALUES (NULL, '$name', '$category', '$price', '$quantity', '$description', '$imgAddress');";
-	operation($sqlAddProduct);
+	dbOperation($sqlAddProduct);
 }
 
 
