@@ -29,8 +29,8 @@ $products = getAllProducts();
 			echo "<td>" . $product['price'] . "</td>";
 			echo "<td>" . $product['qunatity'] . "</td>";
 			echo "<td><img height='40' width='40' src='" . $product['image'] . "'></td>";
-			echo "<td><a href='editproduct.php?p-id=". $product['p_id'] . "' class='btn btn-success'>Edit</a></td>";
-			echo "<td><a class='btn btn-danger'>Delete</td>";
+			echo "<td><a href='editproduct.php?p-id=" . $product['p_id'] . "' class='btn btn-success'>Edit</a></td>";
+			echo "<td><a href='?p-id=". $product['p_id'] ."&delete=ok' class='btn btn-danger'>Delete</td>";
 			echo "</tbody>";
 		}
 		?>

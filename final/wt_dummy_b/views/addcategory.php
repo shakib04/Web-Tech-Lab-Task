@@ -1,6 +1,5 @@
 <?php include 'admin_header.php';
-require_once "../models/db-conn.php";
-
+require_once "../controllers/CategoryController.php";
 
 
 ?>

@@ -12,7 +12,11 @@ if (isset($_POST['edit-category'])) {
 function updateCategory($cname)
 {
     $sqlUpdateCategory = "UPDATE `categories` SET `name` = '$cname' WHERE `categories`.`c_id` =" . $_GET['c-id'] . ";";
-    dbOperation($sqlUpdateCategory);
+    if (dbOperation($sqlUpdateCategory)) {
+        header("location:allcategories.php");
+    } else {
+        echo "Failed to Edit!!";
+    }
 }
 
 //get category details by id
@@ -47,5 +51,19 @@ function addCategory($name)
         header("location:allcategories.php");
     } else {
         echo "Failed to Add!!";
+    }
+}
+
+
+//DELETE FROM `categories` WHERE `categories`.`c_id` = 12   
+//delete category by id
+
+if (isset($_GET['delete']) and isset($_GET['c-id'])) {
+    $deleteQuery = "DELETE FROM `categories` WHERE `categories`.`c_id` = " . $_GET['c-id'] . ";";
+    if (dbOperation($deleteQuery)) {
+        header("location:" . $_SERVER['PHP_SELF'] . "");
+        echo "deleted Succussfully";
+    } else {
+        echo "failed to delete";
     }
 }

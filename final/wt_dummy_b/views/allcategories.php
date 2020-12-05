@@ -29,7 +29,7 @@ $categories = getAllCategories()
 			echo "<td>" . $category['name'] . "</td>";
 			echo "<td>100</td>";
 			echo '<td><a href="editcategory.php?c-id='. $category['c_id'] .'"class="btn btn-success">Edit</a></td>';
-			echo '<td><a class="btn btn-danger">Delete</td>';
+			echo "<td><a href='?c-id=" . $category['c_id'] . "&delete=ok' class='btn btn-danger'>Delete</td>";
 			echo "</tbody>";
 		}
 		?>
