@@ -1,9 +1,7 @@
 <?php
-
-//INSERT INTO `all_users` (`username`, `fullname`, `password`, `email`, `contact`) VALUES ('s1', 'shakib', '1', 's@g.c', '2323');
-
+session_start();
 require_once "../model/db-conn.php";
-u$err_username = "";
+$err_username = "";
 
 if (isset($_POST['register'])) {
     $username = $_POST['username'];
@@ -56,8 +54,17 @@ function loginUser($username, $password)
     $password = md5($password);
     $sqlLogin = "select * from all_users where username='$username' and password = '$password'";
     if (count(getValues($sqlLogin)) == 1) {
+        $_SESSION['username'] = $username;
+        print_r($_SESSION);
         header("location:dashboard.php");
     } else {
         echo "invalid id and pass";
     }
+}
+
+function getUserDetails()
+{
+    $sqlFindUser = "select * from all_users;";
+    $data = getValues($sqlFindUser);
+    return $data;
 }

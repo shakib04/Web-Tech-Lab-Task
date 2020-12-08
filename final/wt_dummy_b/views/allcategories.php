@@ -2,7 +2,7 @@
 include 'admin_header.php';
 require_once "../controllers/CategoryController.php";
 
-$categories = getAllCategories()
+$categories = getAllCategories();
 
 //SELECT  c.c_id,c.name, COUNT(p.category) FROM categories c, products p WHERE c.c_id = p.category GROUP  BY c.name;
 
@@ -28,7 +28,7 @@ $categories = getAllCategories()
 			echo "<td>" . $category['c_id'] . "</td>";
 			echo "<td>" . $category['name'] . "</td>";
 			echo "<td>100</td>";
-			echo '<td><a href="editcategory.php?c-id='. $category['c_id'] .'"class="btn btn-success">Edit</a></td>';
+			echo '<td><a href="editcategory.php?c-id=' . $category['c_id'] . '"class="btn btn-success">Edit</a></td>';
 			echo "<td><a href='?c-id=" . $category['c_id'] . "&delete=ok' class='btn btn-danger'>Delete</td>";
 			echo "</tbody>";
 		}

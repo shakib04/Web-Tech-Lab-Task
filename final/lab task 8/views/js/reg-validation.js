@@ -42,22 +42,26 @@ function regValidation() {
     if (isempty(email)) {
         hasError = true;
         err_email.innerHTML = "This Field is Empty";
+    }else if (email.search("@") == -1) {
+        hasError = true;
+        err_email.innerHTML = "no @ at email";
     }
     if (isempty(contact)) {
         hasError = true;
         err_contact.innerHTML = "This Field is Empty";
     } else if (contact.length <= 10) {
+        // || contact.length > 11
         hasError = true;
         err_contact.innerHTML = "Phone must be 11 characters ";
-    } else if (!checkNumberContains(contact)) {
+    } else if (parseFloat(contact) != contact) {
         hasError = true;
-        err_contact.innerHTML = "Phone must no alphabet";
+        err_contact.innerHTML = "Phone must have no alphabet";
     }
+    //console.log(checkNumber(contact));
 
 
     return !hasError;
 }
-
 
 
 function getElement(id) {
@@ -84,7 +88,7 @@ function isempty(str) {
 }
 
 
-//check number
+//check number contains
 
 function checkNumberContains(str) {
     for (let index = 0; index < str.length; index++) {
