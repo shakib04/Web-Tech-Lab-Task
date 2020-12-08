@@ -2,7 +2,6 @@
 require_once "../controller/user-controller.php";
 
 if (!isset($_SESSION['username'])) {
-    echo "not Set";
     header("location:login.php");
 } else {
     $alldata = getUserDetails();
@@ -14,7 +13,8 @@ if (!isset($_SESSION['username'])) {
 <head>
     <style>
         table,
-        td,th {
+        td,
+        th {
             border: 1px solid steelblue;
             border-collapse: collapse;
         }
@@ -27,11 +27,14 @@ if (!isset($_SESSION['username'])) {
 
 <body>
 
+    <h1>Welcome to Webtech</h1>
+
+
     <table>
+        <caption>all user data</caption>
         <thead>
             <th>name</th>
             <th>usename</th>
-            <th>password</th>
             <th>email</th>
             <th>contact</th>
         </thead>
@@ -41,7 +44,6 @@ if (!isset($_SESSION['username'])) {
             echo "<tr>";
             echo "<td>" . $user['fullname'] . "</td>";
             echo "<td>" . $user['username'] . "</td>";
-            echo "<td>" . $user['password'] . "</td>";
             echo "<td>" . $user['email'] . "</td>";
             echo "<td>" . $user['contact'] . "</td>";
             echo "</tr>";
