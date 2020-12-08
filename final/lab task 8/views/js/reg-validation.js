@@ -49,8 +49,7 @@ function regValidation() {
     if (isempty(contact)) {
         hasError = true;
         err_contact.innerHTML = "This Field is Empty";
-    } else if (contact.length <= 10) {
-        // || contact.length > 11
+    } else if (contact.length <= 10 || contact.length > 11) {
         hasError = true;
         err_contact.innerHTML = "Phone must be 11 characters ";
     } else if (parseFloat(contact) != contact) {
