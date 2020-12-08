@@ -3,6 +3,7 @@
 //INSERT INTO `all_users` (`username`, `fullname`, `password`, `email`, `contact`) VALUES ('s1', 'shakib', '1', 's@g.c', '2323');
 
 require_once "../model/db-conn.php";
+u$err_username = "";
 
 if (isset($_POST['register'])) {
     $username = $_POST['username'];
@@ -11,7 +12,21 @@ if (isset($_POST['register'])) {
     $password = $_POST['password'];
     $contact = $_POST['contactNumber'];
 
-    AddUser($fullname, $username, $email, $password, $contact);
+
+    if (newUser($username)) {
+        AddUser($fullname, $username, $email, $password, $contact);
+    } else {
+        $err_username = "Username already exists";
+    }
+}
+
+function newUser($username)
+{
+    $sqlFindUser = "select * from all_users where username='$username'";
+    if (count(getValues($sqlFindUser)) >= 1) {
+        return false;
+    }
+    return true;
 }
 
 
@@ -25,20 +40,16 @@ function AddUser($fullname, $username, $email, $password, $contact)
     }
 }
 
-function duplicateUser()
-{
-}
-
 
 if (isset($_POST['login'])) {
 
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    if (true) {
-        loginUser($username, $password);
-    }
+    loginUser($username, $password);
 }
+
+
 
 function loginUser($username, $password)
 {

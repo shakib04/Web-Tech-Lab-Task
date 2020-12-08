@@ -26,7 +26,7 @@
             <tr>
                 <td>Username</td>
                 <td>
-                    <input type="text" id="username" name="username" id=""><span class="err_message" id="erUsername"></span>
+                    <input type="text" id="username" name="username" id=""><span class="err_message" id="erUsername"><?php echo $err_username; ?></span>
                 </td>
             </tr>
 
