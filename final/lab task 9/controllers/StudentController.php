@@ -10,6 +10,7 @@ function moreValidation($data)
 
 //add student via ../views/addstudent.php
 $err_name = $err_department = $err_dob = $err_credit = $err_cgpa = $err_image = "";
+$err_dob_date = $err_dob_month = $err_dob_year = "";
 
 $status = "";
 $validCountAddStudent = 0;
@@ -50,7 +51,42 @@ if (isset($_POST['add-student'])) {
         $validCountAddStudent++;
     }
 
-    if ($validCountAddStudent == 5) {
+    //date validation
+
+    //6 year
+
+    if (empty(trim($_POST['year-dob']))) {
+        $err_dob_year = "<span style='color:red; font-weight:bold;'>Field is requiered<span>";
+    } else if (!is_numeric($_POST['year-dob'])) {
+        $err_dob_year = "<span style='color:red; font-weight:bold;'>Year is not numeric<span>";
+    } else {
+        $dob_year = moreValidation($_POST['year-dob']);
+        $validCountAddStudent++;
+    }
+
+    //7 month
+    if (empty(trim($_POST['month-dob']))) {
+        $err_dob_month = "<span style='color:red; font-weight:bold;'>Field is requiered<span>";
+    } else if (!is_numeric($_POST['month-dob'])) {
+        $err_dob_month = "<span style='color:red; font-weight:bold;'>Year is not numeric<span>";
+    } else {
+        $dob_month = moreValidation($_POST['month-dob']);
+        $validCountAddStudent++;
+    }
+
+    //8 date
+    if (empty(trim($_POST['date-dob']))) {
+        $err_dob_date = "<span style='color:red; font-weight:bold;'>Field is requiered<span>";
+    } else if (!is_numeric($_POST['date-dob'])) {
+        $err_dob_date = "<span style='color:red; font-weight:bold;'>Year is not numeric<span>";
+    } else {
+        $dob_date = moreValidation($_POST['date-dob']);
+        $validCountAddStudent++;
+    }
+
+
+    if ($validCountAddStudent == 8) {
+        echo $dob = $dob_year . "/" . $dob_month . "/" . $dob_date;
         addStudent($name, $department, $cgpa, $credit, $dob);
     }
 }
@@ -98,7 +134,7 @@ function updateStudent($name, $department, $cgpa, $credit, $dob)
     $sqlUpdateStudent = "UPDATE `student` SET `name` = '$name', `dept_id` = '$department', `cgpa` = '$cgpa', `credit` = '$credit', `dob` = '$dob' WHERE `student`.`id` =" . $_GET['s-id'] . ";";
     if (dbOperation($sqlUpdateStudent)) {
         echo "<div style='color: aliceblue; background:green; width:70px; padding: 10px; '>Success</div>";
-    }else{
+    } else {
         echo "<div style='color: aliceblue; background:red; width: 70px; padding: 10px; '>Failed</div>";
     }
     //header("location:allstudents.php");
@@ -114,7 +150,7 @@ if (isset($_GET['s-id'])) {
 //delete student by id
 
 if (isset($_GET['delete']) and isset($_GET['s-id'])) {
-   echo $deleteQuery = "DELETE FROM `student` WHERE `student`.`id` = " . $_GET['s-id'] . ";";
+    echo $deleteQuery = "DELETE FROM `student` WHERE `student`.`id` = " . $_GET['s-id'] . ";";
     if (dbOperation($deleteQuery)) {
         header("location:" . $_SERVER['PHP_SELF'] . "");
         echo "deleted Succussfully";

@@ -1,4 +1,4 @@
-<div class="form-group">
-			<h4 class="text">Name:</h4>
-			<input type="text" name="dname" value="<?php echo $department[0]['name']; ?>" class="form-control">
-		</div>
+else if (parseFloat(dob_year) == -1) {
+        hasError = true;
+        errorFieldMessage("err_dob_year", "dob_year", "Select a year First");
+    }

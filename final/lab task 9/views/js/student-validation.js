@@ -8,7 +8,11 @@ function studentValidation() {
     var department = getElement("department").value;
     var cgpa = getElement("cgpa").value;
     var credit = getElement("credit").value;
+
     var dob = getElement("dob").value;
+    var dob_year = getElement("year-dob").value;
+    var dob_month = getElement("month-dob").value;
+    var dob_year = getElement("date-dob").value;
 
     var hasError = false;
 
@@ -57,6 +61,55 @@ function studentValidation() {
         errorFieldMessage("err_dob", "dob", "This Field is Required");
     }
 
+
+    //dob year
+
+    if (isEmpty(dob_year)) {
+        hasError = true;
+        errorFieldMessage("err_dob_year", "dob_year", "This Field is Required");
+    } else if (parseFloat(dob_year) == -1) {
+        hasError = true;
+        errorFieldMessage("err_dob_year", "dob_year", "Select a year First");
+    } else if (parseFloat(dob_year) != dob_year) {
+        hasError = true;
+        errorFieldMessage("err_dob_year", "dob_year", "dob_year format is not correct");
+    } else if (parseFloat(dob_year) > 2000 || parseFloat(dob_year) < 1995) {
+        hasError = true;
+        errorFieldMessage("err_dob_year", "dob_year", "dob_year should in 1995-2000 range");
+    }
+
+    //dob month
+
+    if (isEmpty(dob_month)) {
+        hasError = true;
+        errorFieldMessage("err_dob_month", "dob_month", "This Field is Required");
+    } else if (parseFloat(dob_month) == -1) {
+        hasError = true;
+        errorFieldMessage("err_dob_month", "dob_month", "Select a month First");
+    } else if (parseFloat(dob_month) != dob_month) {
+        hasError = true;
+        errorFieldMessage("err_dob_month", "dob_month", "dob_month format is not correct");
+    } else if (parseFloat(dob_month) > 12 || parseFloat(dob_month) < 1) {
+        hasError = true;
+        errorFieldMessage("err_dob_month", "dob_month", "dob_month should in 1-12 range");
+    }
+
+    //dob date
+
+    if (isEmpty(dob_date)) {
+        hasError = true;
+        errorFieldMessage("err_dob_date", "dob_date", "This Field is Required");
+    } else if (parseFloat(dob_date) == -1) {
+        hasError = true;
+        errorFieldMessage("err_dob_date", "dob_date", "Select a date First");
+    } else if (parseFloat(dob_date) != dob_date) {
+        hasError = true;
+        errorFieldMessage("err_dob_date", "dob_date", "dob_date format is not correct");
+    } else if (parseFloat(dob_date) > 31 || parseFloat(dob_date) < 1) {
+        hasError = true;
+        errorFieldMessage("err_dob_date", "dob_date", "dob_date should in 1-31 range");
+    }
+
     return !hasError;
 }
 
@@ -66,6 +119,9 @@ function refresh() {
     getElement("err_cgpa").innerHTML = "";
     getElement("err_credit").innerHTML = "";
     getElement("err_dob").innerHTML = "";
+    getElement("err_dob_year").innerHTML = "";
+    getElement("err_dob_month").innerHTML = "";
+    getElement("err_dob_date").innerHTML = "";
 
     //remove class List
 
@@ -73,6 +129,9 @@ function refresh() {
     getElement("cgpa").classList.remove("input-border-red");
     getElement("credit").classList.remove("input-border-red");
     getElement("dob").classList.remove("input-border-red");
+    getElement("year-dob").classList.remove("input-border-red");
+    getElement("month-dob").classList.remove("input-border-red");
+    getElement("date-dob").classList.remove("input-border-red");
     getElement("department").classList.remove("input-border-red");
 }
 
