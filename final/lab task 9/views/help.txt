@@ -1,0 +1,4 @@
+<div class="form-group">
+			<h4 class="text">Name:</h4>
+			<input type="text" name="dname" value="<?php echo $department[0]['name']; ?>" class="form-control">
+		</div>
